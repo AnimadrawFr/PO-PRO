@@ -1,9 +1,7 @@
 <template>
-  <v-app>
-    <v-main>
-      <v-btn color="accent"> Primary </v-btn>
-    </v-main>
-  </v-app>
+  <div id="app">
+    
+  </div>
 </template>
 
 <script>

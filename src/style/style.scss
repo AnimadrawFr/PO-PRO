@@ -1,0 +1,105 @@
+@import 'reset.scss';
+@import 'variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+	.mb-20 {
+		margin-bottom: 20px;
+	}
+	.mb-40 {
+		margin-bottom: 40px;
+	}
+}
+
+a {
+	color: $primary;
+	&:hover {
+		color: $black;
+	}
+}
+
+.btn {
+	height: 40px;
+	min-width: 160px;
+	border: none;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	padding: 10px;
+	&.btn-primary {
+		background-color: $primary;
+		color: $white;
+		transition: background-color 0.5s;
+		&:hover {
+			background-color: $black;
+		}
+	}
+}
+
+.d-flex {
+	display: flex;
+	&.justify-center {
+		justify-content: center;
+	}
+	&.align-center {
+		align-items: center;
+	}
+	&.flex-column {
+		flex-direction: column;
+	}
+}
+input {
+	&[type=email], &[type=password], &[type=text] {
+		height: 30px;
+		border: none;
+		padding: 10px;
+		border: 1px solid $lightGrey;
+		margin: 10px;
+		&::placeholder {
+			color: $primary;
+		}
+	}
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.template.fullwidth {
+	display: grid;
+	grid-template-columns: 40% 60%;
+	grid-auto-rows: 100vh;
+
+	.left {
+		background-color: $black;
+		color: $white;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: column;
+		padding: 40px 15%;
+		span {
+			color: $primary;
+		}
+		h1.title {
+			font-size: 35px;
+		}
+		p.introduction {
+			font-size: 30px;
+		}
+		p.footer {
+			font-size: 14px;
+		}
+	}
+
+	.right {
+		background-color: $white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
