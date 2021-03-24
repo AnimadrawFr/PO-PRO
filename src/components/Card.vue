@@ -6,7 +6,7 @@
     </div>
     <hr />
     <div class="card-content" v-if="opened">
-        <component :is="content"></component>
+      <component :is="content"></component>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
     icon: String,
     title: String,
     opened: Boolean,
-    content: [Object, String],
+    content: [Object, String, Function],
   },
 };
 </script>
