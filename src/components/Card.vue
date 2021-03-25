@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @dragstart="$emit('dragstart', $event)" @dragend="$emit('dragend', $event)">
     <div class="card-header">
       <h3><i class="icon" :class="icon"></i>{{ title }}</h3>
       <i class="fas fa-chevron-down"></i>
@@ -18,6 +18,7 @@ export default {
     title: String,
     opened: Boolean,
     content: [Object, String, Function],
+    drag: Function
   },
 };
 </script>
@@ -43,7 +44,8 @@ export default {
     background-color: $primary !important;
   }
   .card-content {
-    height: 20px;
+    min-height: 20px;
+    padding: 10px 10px 15px 10px;
   }
 }
 </style>

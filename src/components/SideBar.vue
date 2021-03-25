@@ -58,8 +58,8 @@ export default {
 @import "@/style/style.scss";
 
 #sidebar {
-  //position: fixed;
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 25%;
   min-height: 100vh;
   background-color: $black;
