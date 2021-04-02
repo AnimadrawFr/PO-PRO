@@ -6,7 +6,7 @@
       </div>
       <div class="prestations">
           <i class="fas fa-paint-brush"></i>
-          0 Types de prestations
+          0 Prestations
       </div>
   </div>
 </template>
@@ -20,7 +20,8 @@ export default {};
 
 #glance {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    font-size: 0.8rem;
 }
 </style>

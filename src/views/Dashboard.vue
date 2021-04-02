@@ -224,6 +224,9 @@ export default {
       return this.items.filter((item) => item.list === 3);
     },
   },
+  mounted() {
+
+  }
 };
 </script>
 

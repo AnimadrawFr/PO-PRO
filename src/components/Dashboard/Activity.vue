@@ -42,6 +42,10 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/style.scss";
 
+h4 {
+  font-size: 0.8rem;
+}
+
 #activity {
   .list-bloc {
     .title {
@@ -51,6 +55,12 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      p {
+        font-size: 0.8rem;
+      }
+      a {
+        font-size: 0.8rem;
+      }
     }
   }
 }

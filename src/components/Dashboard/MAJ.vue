@@ -39,10 +39,16 @@ export default {
   .list-bloc {
     h4 {
       color: $primary;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .content {
+      font-size: 0.8rem;
     }
   }
   .footer {
       text-align: center;
+      font-size: 0.8rem;
   }
 }
 </style>

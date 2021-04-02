@@ -89,15 +89,14 @@ export default {
       background-color: $background;
       padding: 5px;
       margin: 10px;
-      width: 40%;
       text-align: center;
       h3 {
         color: $primary;
-        font-size: 20px;
+        font-size: 1.2rem;
         margin-bottom: 5px;
       }
       p {
-        font-size: 12px;
+        font-size: 0.8rem;
       }
     }
   }

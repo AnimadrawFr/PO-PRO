@@ -35,6 +35,7 @@ export default {
     justify-content: space-between;
     color: $primary;
     padding: 10px;
+    font-size: 1rem;
     cursor: grab;
     .icon {
       margin-right: 10px;

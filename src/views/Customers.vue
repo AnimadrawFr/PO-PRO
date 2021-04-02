@@ -10,46 +10,56 @@
         <button class="btn btn-primary">Rechercher</button>
       </div>
       <div id="customers-filters" class="mt-20">
-        <button class="btn btn-primary">Ajouter une cliente</button>
+        <router-link to="addCustomer">
+          <button class="btn btn-primary w-50">Ajouter une cliente</button>
+        </router-link>
         <div class="filters">
-          <button class="btn btn-primary" @click="sort_A_Z()">Nom a-z</button>
-          <button class="btn btn-primary" @click="sort_Z_A()">Nom z-a</button>
-          <button class="btn btn-primary" @click="sort_recent()">Plus recent</button>
-          <button class="btn btn-primary">Moins recent</button>
+          <button class="btn btn-primary w-50" @click="sort_A_Z()">
+            Nom a-z
+          </button>
+          <button class="btn btn-primary w-50" @click="sort_Z_A()">
+            Nom z-a
+          </button>
         </div>
       </div>
       <div id="customers-list" class="mt-40">
-        <div
-          class="customer-card"
-          v-for="customer in customers"
-          :key="customer.id"
-        >
-          <img class="last-prestation-picture" :src="customer.picture" alt="" />
-          <div class="customer-informations">
-            <p>{{ customer.firstName }}</p>
-            <p>{{ customer.lastName }}</p>
-          </div>
-          <div class="first-visit">
-            <p>Première visite :</p>
-            <div class="tooltip">{{ customer.firstVisit }}</div>
-          </div>
-          <div class="last-visit">
-            <p>Dernière visite :</p>
-            <div class="tooltip">{{ customer.lastVisit }}</div>
-          </div>
-          <div class="last-prestation">
-            <p>Dernière prestation :</p>
-            <div class="tooltip">
-              {{ customer.lastPrestation }} / {{ customer.lastDecoration }}
+        <router-link to="singleCustomer">
+          <div
+            class="customer-card"
+            v-for="customer in customers"
+            :key="customer.id"
+          >
+            <img
+              class="last-prestation-picture"
+              :src="customer.picture"
+              alt=""
+            />
+            <div class="customer-informations">
+              <p>{{ customer.firstName }}</p>
+              <p>{{ customer.lastName }}</p>
+            </div>
+            <div class="first-visit">
+              <p>Première visite :</p>
+              <div class="tooltip">{{ customer.firstVisit }}</div>
+            </div>
+            <div class="last-visit">
+              <p>Dernière visite :</p>
+              <div class="tooltip">{{ customer.lastVisit }}</div>
+            </div>
+            <div class="last-prestation">
+              <p>Dernière prestation :</p>
+              <div class="tooltip">
+                {{ customer.lastPrestation }} / {{ customer.lastDecoration }}
+              </div>
+            </div>
+            <div id="customer-contacts">
+              <a href="#" class="icon fas fa-envelope"></a>
+              <a href="#" class="icon fas fa-phone"></a>
+              <a href="#" class="icon fas fa-eye"></a>
+              <a href="#" class="icon fas fa-trash"></a>
             </div>
           </div>
-          <div id="customer-contacts">
-            <a href="#" class="icon fas fa-envelope"></a>
-            <a href="#" class="icon fas fa-phone"></a>
-            <a href="#" class="icon fas fa-eye"></a>
-            <a href="#" class="icon fas fa-trash"></a>
-          </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -131,7 +141,7 @@ export default {
         }
         return 0;
       });
-    }
+    },
   },
 };
 </script>
@@ -179,6 +189,7 @@ export default {
       justify-content: space-around;
       padding: 10px 0;
       margin: 10px 0;
+      font-size: 0.8rem;
       .last-prestation-picture {
         border-radius: 50%;
         height: 50px;

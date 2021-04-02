@@ -11,6 +11,7 @@
           :key="tool.title"
           :image="require('../assets/sample_img.png')"
           :title="tool.title"
+          :to="tool.to"
         />
       </div>
     </div>
@@ -34,22 +35,27 @@ export default {
         {
           img: "../assets/sample_img.png",
           title: "Enregistrer des types de prestations",
+          to: 'prestations'
         },
         {
           img: "../assets/sample_img.png",
           title: "Lier un compte sumup",
+          to: '#'
         },
         {
           img: "../assets/sample_img.png",
           title: "Inspirations photos",
+          to: 'inspiration'
         },
         {
           img: "../assets/sample_img.png",
           title: "Gestion des stocks",
+          to: '#'
         },
         {
           img: "../assets/sample_img.png",
           title: "Lier un reseau social",
+          to: '#'
         },
       ],
     };

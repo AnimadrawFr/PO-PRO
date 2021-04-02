@@ -21,9 +21,9 @@
     <hr />
     <div class="mt-10">
       <ul class="menu">
-        <li class="active"><a href="#"><i class="icon fas fa-tachometer-alt"></i>Tableau de bord</a></li>
-        <li><a href="#"><i class="icon fas fa-tools"></i>Les outils</a></li>
-        <li><a href="#"><i class="icon fas fa-users"></i>Mes clientes</a></li>
+        <li :class="$route.name == 'dashboard' ? 'active' : ''"><router-link to="/"><i class="icon fas fa-tachometer-alt"></i>Tableau de bord</router-link></li>
+        <li :class="$route.name == 'tools' ? 'active' : ''"><router-link to="tools"><i class="icon fas fa-tools"></i>Les outils</router-link></li>
+        <li :class="$route.name == 'customers' ? 'active' : ''"><router-link to="customers"><i class="icon fas fa-users"></i>Mes clientes</router-link></li>
       </ul>
     </div>
 
@@ -60,7 +60,7 @@ export default {
 #sidebar {
   position: sticky;
   top: 0;
-  width: 25%;
+  width: 30%;
   min-height: 100vh;
   background-color: $black;
   .openClose {
@@ -112,6 +112,7 @@ export default {
         height: 50px;
         text-align: left;
         margin-left: 20px;
+        font-size: 0.8rem;
       }
       &.active {
         background-color: $primary !important;
@@ -129,7 +130,7 @@ export default {
 }
 
 .slide-false {
-  margin-left: -24.3%;
+  margin-left: -28.5%;
   transition: all 150ms ease-in 0s;
 }
 .slide-true {
