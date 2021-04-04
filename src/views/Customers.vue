@@ -3,8 +3,8 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <h1>Mes clientes</h1>
-      <p>Lorem ipsum</p>
+      <h1 class="title">Mes clientes</h1>
+      <p class="subTitle">Lorem ipsum</p>
       <div id="customers-search" class="mt-40">
         <input type="text" name="" id="" />
         <button class="btn btn-primary">Rechercher</button>
@@ -182,7 +182,7 @@ export default {
     .customer-card {
       width: 100%;
       min-height: 50px;
-      background-color: $white;
+      background-color: $black;
       border-radius: 5px;
       display: flex;
       align-items: center;
@@ -204,11 +204,12 @@ export default {
         color: $primary;
       }
       .tooltip {
-        background-color: $lightGrey;
+        background-color: $background;
         padding: 10px 0;
         border-radius: 5px;
         margin-top: 5px;
         text-align: center;
+        color: $white;
       }
       #customer-contacts {
         color: $primary !important;

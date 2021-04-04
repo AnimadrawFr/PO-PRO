@@ -60,6 +60,9 @@ export default {};
 @import "@/style/style.scss";
 
 #login-form {
+  @media (max-width: 460px) {
+    text-align: center !important;
+  }
   h1 {
     color: $primary;
     font-size: 30px;
@@ -74,6 +77,18 @@ export default {};
     }
     .register-me {
       font-size: inherit;
+      @media (max-width: 460px) {
+        text-align: center !important;
+      }
+    }
+    input {
+      &[type="email"],
+      &[type="password"],
+      &[type="text"] {
+        @media (max-width: 460px) {
+          width: 80% !important;
+        }
+      }
     }
   }
 }

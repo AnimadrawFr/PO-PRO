@@ -59,6 +59,16 @@ export default {
 
 #sidebar {
   position: sticky;
+  z-index: 10000;
+  margin-right: 10px;
+  @media(max-width: 850px) {
+    position: fixed;
+    width: 70%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
   top: 0;
   width: 30%;
   min-height: 100vh;
@@ -69,6 +79,11 @@ export default {
     position: absolute;
     right: -18px;
     top: 100px;
+    @media (max-width: 720px) {
+      top: 8px;
+      width: 30px;
+      right: -30px;
+    }
     background-color: $black;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -130,7 +145,10 @@ export default {
 }
 
 .slide-false {
-  margin-left: -28.5%;
+  margin-left: -29.5%;
+  @media(max-width: 850px) {
+    margin-left: -70%;
+  }
   transition: all 150ms ease-in 0s;
 }
 .slide-true {

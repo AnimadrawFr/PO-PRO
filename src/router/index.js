@@ -7,6 +7,8 @@ import PrestationsType from '../views/PrestationsType'
 import addCustomer from '../views/addCustomer'
 import SingleCustomer from '../views/SingleCustomer'
 import addCustomerPrestation from '../views/addCustomerPrestation'
+import Login from '../views/Login'
+import Register from '../views/Register'
 import Gallery from '../views/Gallery'
 
 
@@ -17,6 +19,16 @@ const routes = [
     path: '/',
     component: Dashboard,
     name: 'dashboard'
+  },
+  {
+    path: '/login',
+    component: Login,
+    name: 'login'
+  },
+  {
+    path: '/register',
+    component: Register,
+    name: 'register'
   },
   {
     path: '/tools',

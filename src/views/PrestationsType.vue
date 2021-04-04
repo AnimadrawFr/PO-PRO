@@ -3,7 +3,8 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <h1>Liste des prestations</h1>
+      <h1 class="title">Liste des prestations</h1>
+      <p class="subTitle">Lorem ipsum</p>
       <div class="row-2">
         <div class="col-left">
           <h3>Les prestations :</h3>
@@ -113,7 +114,7 @@ export default {
     justify-content: center;
   }
   .prestation-card {
-    background-color: $white;
+    background-color: $black;
     border-radius: 5px;
     height: 60px;
     width: 98%;
@@ -123,6 +124,7 @@ export default {
     font-size: 0.8rem;
     p {
       margin-left: 10px;
+      color: $white;
     }
     div {
       display: flex;

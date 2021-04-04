@@ -3,13 +3,14 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <h1>Les outils</h1>
-      <p>Lorem ipsum</p>
-      <div class="row-4 mt-40">
+      <h1 class="title">Les outils</h1>
+      <p class="subTitle">Lorem ipsum</p>
+      <div class="row-4 mt-40 tools-list">
         <ToolsCard
           v-for="tool in tools"
           :key="tool.title"
-          :image="require('../assets/sample_img.png')"
+          :icon="tool.icon"
+          :color="tool.color"
           :title="tool.title"
           :to="tool.to"
         />
@@ -33,27 +34,62 @@ export default {
     return {
       tools: [
         {
-          img: "../assets/sample_img.png",
-          title: "Enregistrer des types de prestations",
+          icon: 'fas fa-paint-brush',
+          color: 'lightBlue',
+          title: "Types de prestations",
           to: 'prestations'
         },
         {
-          img: "../assets/sample_img.png",
-          title: "Lier un compte sumup",
+          icon: 'fas fa-cash-register',
+          color: 'lightGreen',
+          title: "Lier un TPE",
           to: '#'
         },
         {
-          img: "../assets/sample_img.png",
+          icon: 'far fa-images',
+          color: 'lightYellow',
           title: "Inspirations photos",
           to: 'inspiration'
         },
         {
-          img: "../assets/sample_img.png",
-          title: "Gestion des stocks",
+          icon: 'fas fa-archive',
+          color: 'lightPink',
+          title: "Mes stocks",
           to: '#'
         },
         {
-          img: "../assets/sample_img.png",
+          icon: 'far fa-calendar-alt',
+          color: 'primary',
+          title: "Mon agenda",
+          to: '#'
+        },
+        {
+          icon: 'fas fa-book',
+          color: 'red',
+          title: "Mon book photo",
+          to: '#'
+        },
+        {
+          icon: 'far fa-address-card',
+          color: 'darkPurple',
+          title: "Cartes de fidelités",
+          to: '#'
+        },
+        {
+          icon: 'fas fa-gift',
+          color: 'orange',
+          title: "Cartes cadeaux",
+          to: '#'
+        },
+        {
+          icon: 'fas fa-envelope-open-text',
+          color: 'green',
+          title: "Mes mails",
+          to: '#'
+        },
+        {
+          icon: 'fab fa-facebook-square',
+          color: 'darkBlue',
           title: "Lier un reseau social",
           to: '#'
         },
@@ -66,6 +102,10 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/style.scss";
 
-#tools {
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
 }
 </style>

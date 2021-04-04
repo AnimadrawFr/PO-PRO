@@ -27,12 +27,26 @@ body {
 	h1 {
 		font-size: 30px;
 	}
+	.col {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 	.container {
 		//border: 1px solid blue;
-		padding: 30px;
-		width: 100%;
+		//padding: 0px 30px;
+		width: 100vw;
 		height: 100%;
 		margin-top: 50px;
+		.title {
+			padding: 20px 0 0 20px;
+		}
+		.subTitle {
+			padding: 10px 0 0 20px;
+		}
+		.title, .subTitle {
+			color: $white;
+			max-width: 250px;
+		}
 	}
 	.page_template {
 		display: flex;
@@ -86,8 +100,11 @@ input {
 		height: 30px;
 		border: none;
 		padding: 10px;
-		border: 1px solid $lightGrey;
+		//border: 1px solid $lightGrey;
+		border-radius: 5px;
 		margin: 10px;
+		background-color: $black;
+		color: $primary;
 		&::placeholder {
 			color: $primary;
 		}
@@ -101,6 +118,7 @@ select {
 	padding: 5px;
 	border: none;
 	color: $primary;
+	background-color: $black;
 	margin: 10px;
 }
 
@@ -115,6 +133,13 @@ select {
 .template.fullwidth {
 	display: grid;
 	grid-template-columns: 40% 60%;
+	@media(max-width: 320px) {
+		height: 100vh;
+		margin-top: 80px;
+	}
+	@media(max-width: 790px) {
+		grid-template-columns: 0% 100%;
+	}
 	grid-auto-rows: 100vh;
 
 	.left {
@@ -141,10 +166,11 @@ select {
 	}
 
 	.right {
-		background-color: $white;
+		background-color: $background;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		color: $white;
 	}
 }
 
@@ -156,24 +182,50 @@ select {
 	object-fit: cover;
 }
 
+.row-1 {
+	display: grid;
+  grid-template-columns: 100%;
+  
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.row-1-2 {
+	display: grid;
+  grid-template-columns: 40% auto;
+  @media(max-width: 720px) {
+	grid-template-columns: 100%;
+  }
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.row-2-1 {
+	display: grid;
+  grid-template-columns: 70% auto;
+  @media(max-width: 850px) {
+	  grid-template-columns: 100%;
+  }
+  
+  grid-auto-rows: minmax(100px, auto);
+}
+
 .row-2 {
 	display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  
   grid-auto-rows: minmax(100px, auto);
 }
 
 .row-3 {
 	display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  
   grid-auto-rows: minmax(100px, auto);
 }
 
 .row-4 {
 	display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  
   grid-auto-rows: minmax(100px, auto);
 }
 
@@ -183,4 +235,8 @@ select {
 	border-radius: 5px;
 	margin-top: 5px;
 	text-align: center;
+}
+
+.red {
+	color: red i !important
 }

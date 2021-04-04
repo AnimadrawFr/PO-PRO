@@ -3,8 +3,8 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <h1>Ajouter une cliente</h1>
-      <p>Créez une fiche cliente en remplissant ce formulaire</p>
+      <h1 class="title">Ajouter une cliente</h1>
+      <p class="subTitle">Créez une fiche cliente en remplissant ce formulaire</p>
 
       <div class="row-2 mt-40">
         <div class="personnalInformations">
@@ -98,6 +98,7 @@ export default {
   }
   .personnalInformations,
   .generalInfomations {
+    color: $primary;
     .form {
       display: flex;
       justify-content: center;

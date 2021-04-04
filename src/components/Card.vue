@@ -1,10 +1,13 @@
 <template>
-  <div class="card" @dragstart="$emit('dragstart', $event)" @dragend="$emit('dragend', $event)">
-    <div class="card-header">
+  <div
+    class="card"
+    @dragstart="$emit('dragstart', $event)"
+    @dragend="$emit('dragend', $event)"
+  >
+    <div class="card-header" v-show="headerShowed">
       <h3><i class="icon" :class="icon"></i>{{ title }}</h3>
-      <i class="fas fa-chevron-down"></i>
+      <p v-show="refreshed">Mis à jour le : 04/04/2021</p>
     </div>
-    <hr />
     <div class="card-content" v-if="opened">
       <component :is="content"></component>
     </div>
@@ -18,7 +21,9 @@ export default {
     title: String,
     opened: Boolean,
     content: [Object, String, Function],
-    drag: Function
+    drag: Function,
+    refreshed: Boolean,
+    headerShowed: Boolean,
   },
 };
 </script>
@@ -27,16 +32,40 @@ export default {
 @import "@/style/style.scss";
 
 .card {
-  background-color: $white;
+  background-color: $black;
   margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: auto;
+  height: 100%;
+  margin: 30px 15px;
+  &::-webkit-scrollbar {
+    width: 10px !important;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: $darkGrey;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+    border: 3px solid $darkGrey;
+    border-radius: 10px;
+  }
   .card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: $primary;
-    padding: 10px;
-    font-size: 1rem;
+    color: $white;
+    padding: 25px;
     cursor: grab;
+    //border-bottom: 1px solid $primary;
+    margin-bottom: 10px;
+    .h3 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
     .icon {
       margin-right: 10px;
     }

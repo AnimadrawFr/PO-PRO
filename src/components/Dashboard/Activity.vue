@@ -57,6 +57,7 @@ h4 {
       justify-content: space-between;
       p {
         font-size: 0.8rem;
+        color: $primary;
       }
       a {
         font-size: 0.8rem;

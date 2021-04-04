@@ -3,73 +3,62 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <h1>Tableau de bord</h1>
-      <p>
+      <h1 class="title">Tableau de bord</h1>
+      <p class="subTitle">
         En un coup d'œil, retrouvez toutes les informations utiles à votre salon
       </p>
-      <div class="row-3 mt-40">
-        <div
-          class="col drop-zone"
-          :class="itemDrag ? 'dashed' : ''"
-          @drop="onDrop($event, 1)"
-          @dragover.prevent
-          @dragenter.prevent
-        >
+      <div class="row-1 mt-40">
+        <div class="col">
           <Card
-            v-for="el in listOne"
-            :key="el.name"
-            :icon="el.icon"
-            :title="el.name"
+            :icon="items[0].icon"
+            :title="items[0].name"
             :opened="true"
-            :content="el.content"
-            class="drag-el"
-            draggable
-            @dragstart="startDrag($event, el)"
-            @dragend="endDrag()"
+            :content="items[0].content"
+            :headerShowed="true"
           >
           </Card>
         </div>
-
-        <div
-          class="col drop-zone"
-          :class="itemDrag ? 'dashed' : ''"
-          @drop="onDrop($event, 2)"
-          @dragover.prevent
-          @dragenter.prevent
-        >
+      </div>
+      <div class="row-2-1 mt-10">
+        <div class="col">
           <Card
-            v-for="el in listTwo"
-            :key="el.name"
-            :icon="el.icon"
-            :title="el.name"
+            :icon="items[1].icon"
+            :title="items[1].name"
             :opened="true"
-            :content="el.content"
-            class="drag-el"
-            draggable
-            @dragstart="startDrag($event, el)"
-            @dragend="endDrag()"
+            :content="items[1].content"
+            :headerShowed="true"
           >
           </Card>
         </div>
-
-        <div
-          class="col drop-zone"
-          :class="itemDrag ? 'dashed' : ''"
-          @drop="onDrop($event, 3)"
-          @dragover.prevent
-          @dragenter.prevent
-        >
+        <div class="col">
           <Card
-            v-for="el in listThree"
-            :key="el.name"
-            :icon="el.icon"
-            :title="el.name"
+            :icon="items[2].icon"
+            :title="items[2].name"
             :opened="true"
-            :content="el.content"
-            class="drag-el"
-            draggable
-            @dragstart="startDrag($event, el)"
-            @dragend="endDrag()"
+            :content="items[2].content"
+            :headerShowed="true"
+          >
+          </Card>
+        </div>
+      </div>
+      <div class="row-1-2 mt-10">
+        <div class="col">
+          <Card
+            :icon="items[3].icon"
+            :title="items[3].name"
+            :opened="true"
+            :content="items[3].content"
+            :headerShowed="true"
+          >
+          </Card>
+        </div>
+        <div class="col">
+          <Card
+            :icon="items[4].icon"
+            :title="items[4].name"
+            :opened="true"
+            :content="items[4].content"
+            :headerShowed="true"
           >
           </Card>
         </div>
@@ -85,8 +74,10 @@ import Card from "@/components/Card";
 import Glance from "@/components/Dashboard/Glance";
 import Activity from "@/components/Dashboard/Activity";
 import MAJ from "@/components/Dashboard/MAJ";
-import Notepad from "@/components/Dashboard/Notepad";
+import ToDoList from "@/components/Dashboard/ToDoList";
 import Stats from "@/components/Dashboard/Stats";
+import latestCustomers from "@/components/Dashboard/LatestCustomers";
+import LastRendezVous from "../components/Dashboard/LastRendezVous.vue";
 
 export default {
   components: {
@@ -97,7 +88,9 @@ export default {
     Glance,
     Activity,
     MAJ,
-    Notepad
+    ToDoList,
+    latestCustomers,
+    LastRendezVous,
   },
   data() {
     return {
@@ -112,121 +105,37 @@ export default {
         },
         {
           id: 1,
-          name: "Dernière activité",
-          icon: "fas fa-chart-bar",
-          content: Activity,
+          name: "Dernières clientes enregistrées",
+          icon: "far fa-user",
           list: 1,
+          content: latestCustomers,
         },
         {
           id: 2,
-          name: "Quelques chiffres",
-          icon: "fas fa-coins",
-          content: Stats,
-          list: 2,
-        },
-        {
-          id: 3,
-          name: "Mises à jours",
-          icon: "fas fa-coins",
-          content: MAJ,
-          list: 2,
+          name: "3 prochains rendez-vous",
+          icon: "far fa-calendar",
+          list: 1,
+          content: LastRendezVous,
         },
         {
           id: 4,
-          name: "Bloc note",
+          name: "ToDoList",
           icon: "far fa-sticky-note",
-          content: Notepad,
-          list: 3,
-        }
+          list: 1,
+          content: ToDoList,
+        },
+        {
+          id: 4,
+          name: "Quelques chiffres",
+          icon: "fas fa-calculator",
+          list: 1,
+          content: Stats,
+        },
       ],
     };
   },
-  methods: {
-    startDrag(evt, item) {
-      this.itemDrag = true
-      evt.dataTransfer.dropEffect = "move";
-      evt.dataTransfer.effectAllowed = "move";
-      evt.dataTransfer.setData("itemID", item.id);
-    },
-    endDrag() {
-      this.itemDrag = false
-    },
-    onDrop(evt, list) {
-      this.itemDrag = false
-      let order = [];
-      const itemID = evt.dataTransfer.getData("itemID");
-
-      const item = this.items.find((item) => item.id == itemID);
-      console.log(item);
-      item.list = list;
-
-      this.items.forEach((e) => {
-        order.push(e.list);
-      });
-
-      localStorage.setItem("dashboard-order", JSON.stringify(order));
-      console.log(order);
-    },
-  },
-  created() {
-    let orderStorage = localStorage.getItem("dashboard-order");
-    if (orderStorage) {
-      if (JSON.parse(orderStorage).length !== this.items.length) {
-        console.log("il y a une mise a jour");
-
-        let newOrder = JSON.parse(orderStorage);
-
-        if (JSON.parse(orderStorage).length > this.items.length) {
-          for (
-            let i = this.items.length;
-            i < JSON.parse(orderStorage).length;
-            i++
-          ) {
-            newOrder.pop();
-            this.items.forEach((e, i) => {
-              e.list = newOrder[i];
-            });
-          }
-          localStorage.setItem("dashboard-order", JSON.stringify(newOrder));
-        } else if (JSON.parse(orderStorage).length < this.items.length) {
-          for (
-            let i = JSON.parse(orderStorage).length;
-            i < this.items.length;
-            i++
-          ) {
-            newOrder.push(3);
-            this.items.forEach((e, i) => {
-              e.list = newOrder[i];
-            });
-          }
-          localStorage.setItem("dashboard-order", JSON.stringify(newOrder));
-        }
-
-        console.log(localStorage.getItem("dashboard-order"));
-      } else {
-        console.log("pas de mise a jour");
-        let order = JSON.parse(orderStorage);
-
-        this.items.forEach((e, i) => {
-          e.list = order[i];
-        });
-      }
-    }
-  },
-  computed: {
-    listOne() {
-      return this.items.filter((item) => item.list === 1);
-    },
-    listTwo() {
-      return this.items.filter((item) => item.list === 2);
-    },
-    listThree() {
-      return this.items.filter((item) => item.list === 3);
-    },
-  },
-  mounted() {
-
-  }
+  computed: {},
+  mounted() {},
 };
 </script>
 
@@ -235,8 +144,6 @@ export default {
 
 #dashboard {
   .col {
-    
-    padding: 5px;
     &.dashed {
       border: 1px dashed rgba($black, 0.5);
     }

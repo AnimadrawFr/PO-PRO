@@ -44,6 +44,7 @@ export default {
     }
     .content {
       font-size: 0.8rem;
+      color: $white;
     }
   }
   .footer {

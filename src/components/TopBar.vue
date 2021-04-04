@@ -14,15 +14,18 @@ export default {
 @import "@/style/style.scss";
 
 #topbar {
-    position: absolute;
+    position: fixed;
+    z-index: 9999;
     height: 50px;
     width: 100%;
-    background-color: $white;
+    top: 0;
+    background-color: $background;
+    border-bottom: 1px solid $primary;
     align-items: center;
     justify-content: flex-end;
     .notification {
         margin-right: 20px;
-        color: $primary;
+        color: $white;
         font-size: 25px;
         transform: rotate(25deg);
     }
