@@ -3,85 +3,39 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <div id="customer-informations" class="mb-20">
-        <img
-          class="last_prestation"
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80"
-          alt=""
-        />
-        <div>
-          <p>Nom, Prénom</p>
-          <p>Dernière visite: 21/03/2021</p>
-        </div>
-      </div>
-      <div class="row-2 mb-20">
-        <div class="customer-last">
-          <div class="first-visit">
-            <p>Première visite :</p>
-            <div class="tooltip">21/03/2021</div>
-          </div>
-          <div class="last-prestation">
-            <p>Dernière prestation :</p>
-            <div class="tooltip">21/03/2021</div>
-          </div>
-        </div>
-        <div class="customer-contact">
-          <div class="customer-phone">
-            <p>Tél :</p>
-            <div class="tooltip">0749217012</div>
-          </div>
-          <div class="customer-email">
-            <p>Email :</p>
-            <div class="tooltip">sonEmail@outlook.com</div>
-          </div>
-          <div class="customer-address">
-            <p>Adresse :</p>
-            <div class="tooltip">13 rue haute - 55120 - Auzeville</div>
-          </div>
-        </div>
-      </div>
-
-      <router-link to="addCustomerPrestation">
-        <button class="btn btn-primary">nouvelle prestation</button>
-      </router-link>
-      <div id="customers-list" class="mt-40">
-        <div class="customer-card">
-          <img
-            class="last_prestation"
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80"
-            alt=""
+      <h1 class="title">Fiche cliente</h1>
+      <p class="subTitle">
+        Lorem ipsum
+      </p>
+      <div class="row-1-2">
+        <div class="col">
+          <Card 
+            :icon="items[0].icon"
+            :title="items[0].name"
+            :opened="true"
+            :content="items[0].content"
+            :headerShowed="true"
           />
-          <div class="date-visit">
-            <p>Date:</p>
-            <div class="tooltip">21/03/2021</div>
-          </div>
-          <div class="prestation-type">
-            <p>Prestation:</p>
-            <div class="tooltip">Réparation, Chablon</div>
-          </div>
-          <div class="decoration-type">
-            <p>Décoration:</p>
-            <div class="tooltip">Nail art</div>
-          </div>
-          <div class="comment">
-            <p>Commentaire:</p>
-            <div class="tooltip">Lorem ipsum</div>
-          </div>
-          <div class="sepp">
-
-          </div>
-          <div class="ht-total">
-            <p>Total (ht):</p>
-            <div class="tooltip">40.00€</div>
-          </div>
-          <div class="remise">
-            <p>Remise:</p>
-            <div class="tooltip">5 %</div>
-          </div>
-          <div class="ttc-total">
-            <p>Total (ttc):</p>
-            <div class="tooltip">35.00€</div>
-          </div>
+        </div>
+        <div class="col">
+          <Card 
+            :icon="items[2].icon"
+            :title="items[2].name"
+            :opened="true"
+            :content="items[2].content"
+            :headerShowed="true"
+          />
+        </div>
+      </div>
+      <div class="row-1">
+        <div class="col">
+          <Card 
+            :icon="items[1].icon"
+            :title="items[1].name"
+            :opened="true"
+            :content="items[1].content"
+            :headerShowed="true"
+          />
         </div>
       </div>
     </div>
@@ -91,14 +45,49 @@
 <script>
 import SideBar from "@/components/SideBar";
 import TopBar from "@/components/TopBar";
+import Card from "@/components/Card";
+import CustomerSheet from "@/components/CustomerSheet";
+import CustomerPrestations from "@/components/CustomerPrestations";
+import CustomerFirstSheet from "@/components/CustomerFirstSheet";
+
+
+
 
 export default {
   components: {
     SideBar,
     TopBar,
+    Card,
+    CustomerSheet,
+    CustomerPrestations,
+    CustomerFirstSheet
   },
   data() {
-    return {};
+    return {
+      items: [
+        {
+          id: 0,
+          name: "Informations générales",
+          icon: "far fa-eye",
+          list: 1,
+          content: CustomerSheet,
+        },
+        {
+          id: 1,
+          name: "Liste des prestations",
+          icon: "far fa-eye",
+          list: 1,
+          content: CustomerPrestations,
+        },
+        {
+          id: 2,
+          name: "Fiche générale",
+          icon: "far fa-eye",
+          list: 1,
+          content: CustomerFirstSheet,
+        },
+      ],
+    };
   },
   methods: {},
 };

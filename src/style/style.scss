@@ -240,3 +240,16 @@ select {
 .red {
 	color: red i !important
 }
+
+tbody {
+	tr {
+		&:hover {
+			background-color: rgba($primary, 0.2);
+		}
+	}
+	tr:nth-child(2n + 2) {
+		&:hover {
+			background-color: rgba($primary, 0.2);
+		}
+	}
+}
