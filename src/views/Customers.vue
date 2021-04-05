@@ -11,8 +11,8 @@
       </div>
       <div class="row-1">
         <div class="col">
-          <router-link :to="'addCustomer'">
-            <button class="addButton btn btn-primary">Ajouter une cliente</button>
+          <router-link :to="'addCustomer'" tag="button" class="addButton btn btn-primary">
+            Ajouter une cliente
           </router-link>
           <Card
             :title="table[0].name"

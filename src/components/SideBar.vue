@@ -163,4 +163,5 @@ export default {
   transform: rotate(0);
   transition: all 150ms ease-in 0s;
 }
+
 </style>

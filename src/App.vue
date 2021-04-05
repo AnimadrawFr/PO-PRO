@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    
     <router-view></router-view>
   </div>
 </template>
@@ -13,7 +14,11 @@ export default {
     SideBar,
   },
   data: () => ({
-    //
+    SideBarActive: localStorage.getItem('sidebar') ? JSON.parse(localStorage.getItem('sidebar')) : true
   }),
 };
 </script>
+
+<style lang="scss">
+
+</style>
