@@ -10,6 +10,7 @@ import addCustomerPrestation from '../views/addCustomerPrestation'
 import Login from '../views/Login'
 import Register from '../views/Register'
 import Gallery from '../views/Gallery'
+import Fidelity from '../views/Fidelity'
 
 
 Vue.use(VueRouter)
@@ -36,6 +37,11 @@ const routes = [
     name: 'tools'
   },
   {
+    path: '/fidelity',
+    component: Fidelity,
+    name: 'fidelity'
+  },
+  {
     path: '/inspiration',
     component: Gallery,
     name: 'inspiration'
@@ -50,7 +56,7 @@ const routes = [
     component: Customers,
     name: 'customers'
   },
-  
+
   {
     path: '/addCustomer',
     component: addCustomer,

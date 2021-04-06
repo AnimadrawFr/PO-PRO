@@ -73,7 +73,7 @@ export default {
           icon: 'far fa-address-card',
           color: 'darkPurple',
           title: "Cartes de fidelités",
-          to: '#'
+          to: 'fidelity'
         },
         {
           icon: 'fas fa-gift',
