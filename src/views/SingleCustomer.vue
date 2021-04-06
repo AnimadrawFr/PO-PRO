@@ -5,7 +5,9 @@
     <div class="container">
       <h1 class="title">Fiche cliente</h1>
       <p class="subTitle">
-        Lorem ipsum
+        <button class="btn btn-primary">
+          Ajouter une prestation
+        </button>
       </p>
       <div class="row-1-2">
         <div class="col">

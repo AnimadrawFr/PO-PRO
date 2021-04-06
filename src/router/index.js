@@ -10,6 +10,8 @@ import addCustomerPrestation from '../views/addCustomerPrestation'
 import Login from '../views/Login'
 import Register from '../views/Register'
 import Gallery from '../views/Gallery'
+import Agenda from '../views/Agenda'
+
 
 
 Vue.use(VueRouter)
@@ -34,6 +36,11 @@ const routes = [
     path: '/tools',
     component: Tools,
     name: 'tools'
+  },
+  {
+    path: '/agenda',
+    component: Agenda,
+    name: 'agenda'
   },
   {
     path: '/inspiration',

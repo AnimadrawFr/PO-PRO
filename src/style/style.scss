@@ -92,6 +92,9 @@ a {
 	&.justify-center {
 		justify-content: center;
 	}
+	&.justify-between {
+		justify-content: space-between;
+	}
 	&.align-center {
 		align-items: center;
 	}
@@ -265,8 +268,7 @@ tbody {
 	margin-bottom: 10px;
 	border-radius: 10px;
 	overflow: auto;
-	height: 100%;
-	margin: 30px 15px;
+	margin: 0 15px;
 	&::-webkit-scrollbar {
 	  width: 10px !important;
 	}
@@ -307,3 +309,29 @@ tbody {
 	  padding: 10px 10px 15px 10px;
 	}
   }
+
+.fc-daygrid-day {
+	&:hover {
+		background-color: $background;
+	}
+}
+.fc-col-header  {
+	width: 100% !important;
+}
+.fc-scrollgrid-sync-table, .fc-daygrid-body-unbalanced {
+	width: 100% !important
+}
+
+.fc-daygrid-event {
+	color: $white !important;
+	&:hover {
+		color: $primary !important;
+	}
+}
+
+.fc-day-today {
+	background-color: rgba($lightPink, 0.2) !important;
+}
+.fc-daygrid-day-number {
+	color: $white !important;
+}
