@@ -37,16 +37,14 @@
       <div class="bloc">
         <h1>Textes</h1>
 
-        <p v-for="(text, index) in texts" style="color: red">{{ text }}</p>
+        <p v-for="(input, index) in inputs" style="color: red">{{ input.text }}</p>
 
         <div class="textViews">
           <template v-for="(input, index) in inputs">
-            <base-input :inputChange="input.text"
-                        :key="`${index}-${input.text}`"
-                        @inputChange="changeInputValue(index, $event)"
-                        @removeInput="removeInput(index)"
-                        :id="index"
-                        :value="input.text"/>
+            <base-input
+              v-model="input.text"
+              @remove-input="removeInput(index)"
+            />
           </template>
           <span @click="addInput">
             <i class="icon fas fa-plus"></i>
@@ -111,7 +109,6 @@
           }
         ],
         inputs: [],
-        texts: [],
         selectedTool: '',
         activeView: 'recto',
         activeZoomOn: '',
@@ -124,15 +121,10 @@
         this.activeZoomOn.style.transform = `scale(${this.baseScale})`
       },
       addInput () {
-        this.inputs = [...this.inputs, BaseInput]
+        this.inputs.push({ text: '' })
       },
       removeInput (index) {
-        this.texts = this.texts.filter(item => item !== this.texts[index])
-        console.log()
-      },
-      changeInputValue (index, value) {
-        this.texts[index] = value
-        this.inputs = [...this.inputs]
+        this.inputs.splice(index, 1)
       },
       activeZoom (event) {
         this.activeZoomOn = event.target
