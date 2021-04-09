@@ -14,7 +14,13 @@
       <div v-if="activeView === 'recto' || activeView === 'rv'"
            @wheel.prevent="zoom"
            @mouseover="activeZoom"
-           class="front"></div>
+           class="front">
+        <div class="draggable"></div>
+        <!--<div v-for="(input, index) in inputs"
+             :key="index"
+             :class="'l' + index + 'l'"
+             style="color: red">{{ input.text }}</div>-->
+      </div>
       <div v-if="activeView === 'verso' || activeView === 'rv'"
            @wheel.prevent="zoom"
            @mouseover="activeZoom"
@@ -36,15 +42,11 @@
 
       <div class="bloc">
         <h1>Textes</h1>
-
-        <p v-for="(input, index) in inputs" style="color: red">{{ input.text }}</p>
-
         <div class="textViews">
           <template v-for="(input, index) in inputs">
             <base-input
               v-model="input.text"
-              @remove-input="removeInput(index)"
-            />
+              @remove-input="removeInput(index)"/>
           </template>
           <span @click="addInput">
             <i class="icon fas fa-plus"></i>
@@ -56,6 +58,7 @@
 </template>
 
 <script>
+  import interact from 'interactjs'
   import BaseInput from '@/views/components/BaseInput'
 
   export default {
@@ -122,6 +125,24 @@
       },
       addInput () {
         this.inputs.push({ text: '' })
+        const position = { x: 0, y: 0 }
+
+        for (let i = 0; i < this.inputs.length; i++) {
+          interact(`.l${i}l`).draggable({
+            listeners: {
+              start (e) {
+                console.log(e.type, e.target)
+              },
+              move (e) {
+                position.x = e.dx
+                position.y = e.dy
+                e.target.style.transform =
+                    `translate(${position.x}px, ${position.y}px)`
+              }
+            }
+          })
+        }
+
       },
       removeInput (index) {
         this.inputs.splice(index, 1)
@@ -138,12 +159,44 @@
     },
     mounted () {
       this.zoomableElement = [document.querySelector('.front'), document.querySelector('.back')]
+      const position = { x: 0, y: 0 }
+
+      const v = document.querySelector('.draggable')
+      console.log(v)
+
+      console.log(interact('.draggable').draggable())
+
+      interact('.draggable').draggable({
+        listeners: {
+          start (e) {
+            console.log(e.type, e.target)
+          },
+          move (e) {
+            position.x = e.dx
+            position.y = e.dy
+            e.target.style.transform =
+                `translate(${position.x}px, ${position.y}px)`
+          }
+        }
+      })
     }
   }
 </script>
 
 <style lang="scss" scoped>
 @import "@/style/variables.scss";
+
+.draggable {
+  width: 25%;
+  min-height: 6.5em;
+  margin: 1rem 0 0 1rem;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 4%;
+  touch-action: none;
+  user-select: none;
+}
 
 .editor {
   .topBar {
