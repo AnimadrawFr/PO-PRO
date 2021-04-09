@@ -42,9 +42,9 @@
         <div class="textViews">
           <template v-for="(input, index) in inputs">
             <base-input :inputChange="input.text"
-                        :key="index"
+                        :key="`${index}-${input.text}`"
                         @inputChange="changeInputValue(index, $event)"
-                        @removeInput="removeInput(index, input)"
+                        @removeInput="removeInput(index)"
                         :id="index"
                         :value="input.text"/>
           </template>
@@ -128,7 +128,11 @@
       },
       removeInput (index) {
         this.texts = this.texts.filter(item => item !== this.texts[index])
-        this.inputs = this.inputs.filter(item => console.log(index))
+        console.log()
+      },
+      changeInputValue (index, value) {
+        this.texts[index] = value
+        this.inputs = [...this.inputs]
       },
       activeZoom (event) {
         this.activeZoomOn = event.target
@@ -138,10 +142,6 @@
       },
       selectView (view) {
         this.activeView = view
-      },
-      changeInputValue (index, value) {
-        this.texts[index] = value
-        this.inputs = [...this.inputs]
       }
     },
     mounted () {
