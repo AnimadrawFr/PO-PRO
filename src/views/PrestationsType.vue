@@ -6,7 +6,7 @@
       <h1 class="title">Liste des prestations</h1>
       <p class="subTitle">Lorem ipsum</p>
       <div class="row-2">
-        <div class="col-left">
+        <div class="col col-left">
           <h3>Les prestations :</h3>
           <div class="addPrestation">
             <input
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div class="col col-right">
           <h3>Les décorations :</h3>
           <div class="addDecoration">
             <input
@@ -81,7 +81,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/style/style.scss";
-
+.col {
+  @media(max-width: 720px) {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
 #prestations {
   h3 {
     color: $primary;
@@ -89,6 +96,13 @@ export default {
   }
   .col-left {
     border-right: 2px solid $primary;
+    @media (max-width: 720px) {
+      border-right: none;
+      text-align: center;
+    }
+  }
+  .col-right {
+    padding-left: 10px;
   }
   .addPrestation,
   .addDecoration {

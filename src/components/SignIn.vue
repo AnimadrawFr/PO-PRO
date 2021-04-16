@@ -56,6 +56,9 @@ export default {};
     }
     .register-me {
       font-size: inherit;
+      @media(max-width: 720px) {
+        width: 70%;
+      }
     }
   }
 }

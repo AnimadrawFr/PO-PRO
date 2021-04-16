@@ -5,6 +5,7 @@ import Tools from '../views/Tools'
 import Customers from '../views/Customers'
 import PrestationsType from '../views/PrestationsType'
 import addCustomer from '../views/addCustomer'
+import EditCustomer from '../views/EditCustomer'
 import SingleCustomer from '../views/SingleCustomer'
 import addCustomerPrestation from '../views/addCustomerPrestation'
 import Login from '../views/Login'
@@ -62,6 +63,11 @@ const routes = [
     path: '/addCustomer',
     component: addCustomer,
     name: 'addCustomer'
+  },
+  {
+    path: '/editCustomer',
+    component: EditCustomer,
+    name: 'editCustomer'
   },
   {
     path: '/singleCustomer',

@@ -3,10 +3,8 @@
     <TopBar />
     <SideBar />
     <div class="container">
-      <h1 class="title">Ajouter une cliente</h1>
-      <p class="subTitle">
-        Créez une fiche cliente en remplissant ce formulaire
-      </p>
+      <h1 class="title">Modifier une cliente</h1>
+      <p class="subTitle">Modifier la cliente : Nom prénom</p>
 
       <div class="row-1 mt-10">
         <div class="col">
@@ -18,51 +16,27 @@
               <div class="input_group">
                 <div class="input_blc">
                   <label for="firstName">* Prénom</label>
-                  <input
-                    id="firstName"
-                    type="text"
-                    placeholder="Prénom de votre cliente"
-                  />
+                  <input id="firstName" type="text" value="Amandine" />
                 </div>
                 <div class="input_blc">
                   <label for="lastName">* Nom</label>
-                  <input
-                    id="lastName"
-                    type="text"
-                    placeholder="Nom de famille de votre cliente"
-                  />
+                  <input id="lastName" type="text" value="George" />
                 </div>
                 <div class="input_blc">
                   <label for="birthDay">* Date de naissance</label>
-                  <input
-                    id="birthDay"
-                    type="text"
-                    placeholder="Entrez la date de naissance de votre cliente - Ex: (01/01/1987)"
-                  />
+                  <input id="birthDay" type="text" value="20/06/1987" />
                 </div>
                 <div class="input_blc">
                   <label for="phone">* Téléphone</label>
-                  <input
-                    id="phone"
-                    type="text"
-                    placeholder="Numéro de téléphone de votre cliente"
-                  />
+                  <input id="phone" type="text" value="0749217012" />
                 </div>
                 <div class="input_blc">
                   <label for="email">* Email</label>
-                  <input
-                    id="email"
-                    type="text"
-                    placeholder="Adresse email de votre cliente"
-                  />
+                  <input id="email" type="text" value="contact@animanails.fr" />
                 </div>
                 <div class="input_blc">
                   <label for="job">Métier</label>
-                  <input
-                    id="job"
-                    type="text"
-                    placeholder="Si plusieurs métiers, (séparez les par une virgule)"
-                  />
+                  <input id="job" type="text" value="Prothesiste ongulaire" />
                 </div>
               </div>
             </div>
@@ -81,17 +55,13 @@
               <div class="input_group">
                 <div class="input_blc">
                   <label for="firstRDV">Date du premier rendez-vous :</label>
-                  <input
-                    id="firstRDV"
-                    type="text"
-                    placeholder="Entrez la date du premier rendez-vous - Ex:(01/01/2020)"
-                  />
+                  <input id="firstRDV" type="text" value="01/01/2020" />
                 </div>
                 <div class="input_blc">
                   <label for="nails">* Nature des ongles</label>
                   <select name="" id="nails">
                     <option value="#">Choisir un type d'ongle</option>
-                    <option value="Sains">Sains</option>
+                    <option value="Sains" selected>Sains</option>
                     <option value="Abimés">Abimés</option>
                     <option value="Rongés">Rongés</option>
                     <option value="Autres">Autres</option>
@@ -102,7 +72,7 @@
                   <select name="" id="skin">
                     <option value="#">Choisir un type de peau</option>
                     <option value="Sèche">Sèche</option>
-                    <option value="Normale">Normale</option>
+                    <option value="Normale" selected>Normale</option>
                     <option value="Grasse">Grasse</option>
                     <option value="Mixte">Mixte</option>
                   </select>
@@ -112,25 +82,20 @@
                   <select name="" id="cuticules">
                     <option value="#">Choisir un type de cuticule</option>
                     <option value="Carrés">Carrés</option>
-                    <option value="Ovales">Ovales</option>
+                    <option value="Ovales" selected>Ovales</option>
                     <option value="En V">En V</option>
                     <option value="Autres">Autres</option>
                   </select>
                 </div>
                 <div class="input_blc">
                   <label for="sport">Sports pratiqués</label>
-                  <input
-                    type="text"
-                    name=""
-                    id="sport"
-                    placeholder="Si elle pratique plusieurs sports (séparez les par une virgules)"
-                  />
+                  <input type="text" name="" id="sport" value="Aucun" />
                 </div>
                 <div class="input_blc">
                   <label for="smoker">* Fumeuse</label>
                   <select name="" id="smoker">
                     <option value="#">Votre cliente fume t'elle ?</option>
-                    <option value="Oui">Oui</option>
+                    <option value="Oui" selected>Oui</option>
                     <option value="Non">Non</option>
                   </select>
                 </div>
@@ -141,7 +106,7 @@
                       Votre cliente prend t'elle des médicaments ?
                     </option>
                     <option value="Oui">Oui</option>
-                    <option value="Non">Non</option>
+                    <option value="Non" selected>Non</option>
                   </select>
                 </div>
                 <div class="input_blc">
@@ -149,7 +114,7 @@
                   <select name="" id="enceinte">
                     <option value="#">Votre cliente est elle enceinte ?</option>
                     <option value="Oui">Oui</option>
-                    <option value="Non">Non</option>
+                    <option value="Non" selected>Non</option>
                   </select>
                 </div>
                 <button class="btn btn-primary mt-20">Enregistrer</button>
@@ -183,9 +148,8 @@ export default {
 
 #addCustomer {
   select {
-      height: 45px !important;
-      color: $primary !important;
-    
+    height: 45px !important;
+    color: $primary !important;
   }
   .card-content {
     color: $white;

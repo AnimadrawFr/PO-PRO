@@ -1,68 +1,21 @@
 <template>
   <div id="agenda" class="page_template">
-    <TopBar />
-    <SideBar />
     <div class="container">
-      <h1 class="title">Mon agenda</h1>
-      <p class="subTitle">Personnalisez et visualisez tout vos rendez-vous</p>
-      <div class="row-1 mt-40">
-        <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <h3><i class="icon fas fa-eye"></i>Ajouter un rendez-vous</h3>
-            </div>
-            <div class="card-content">
-              Pour :
-              <select name="" id="" class="mt-10" v-model="newEvent.customer">
-                <option value="null">Choisir une cliente</option>
-                <option value="George Amandine">George Amandine</option>
-                <option value="Maxime Sénéchal">Maxime Sénéchal</option>
-                <option value="Cécilia Sénéchal">Cécilia Sénéchal</option>
-              </select>
-              <div class="mt-10 d-flex align-center justify-between">
-                <div>
-                  Date du rendez-vous : <br />
-                  <input
-                    type="date"
-                    name=""
-                    id=""
-                    class="mt-10"
-                    v-model="newEvent.date"
-                  />
-                </div>
-                <div>
-                  Heure du rendez-vous : <br />
-                  <input
-                    type="time"
-                    name=""
-                    id=""
-                    class="mt-10"
-                    v-model="newEvent.hour"
-                  />
-                </div>
-                <div>
-                  Choisir une couleur : <br />
-                  <input
-                    type="color"
-                    name=""
-                    id=""
-                    class="mt-10"
-                    v-model="newEvent.color"
-                  />
-                </div>
-              </div>
-              <button class="btn btn-primary mt-20" @click="setEvent()">
-                Ajouter le rendez-vous
-              </button>
-            </div>
-          </div>
-        </div>
+      <div class="actions">
+        <month-picker-input
+          lang="fr"
+          :default-month="new Date().getMonth()"
+          :default-year="new Date().getFullYear()"
+          :max-date="new Date()"
+          input-pre-filled
+        />
+        <button class="btn btn-primary">
+          <i class="fas fa-plus"></i>
+        </button>
       </div>
-      <div class="row-1">
-        <div class="col">
-          <div class="card">
-            <FullCalendar :options="calendarOptions" id="agendaCalendar" />
-          </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-header"></div>
         </div>
       </div>
     </div>
@@ -72,77 +25,68 @@
 <script>
 import SideBar from "@/components/SideBar";
 import TopBar from "@/components/TopBar";
-import FullCalendar, { Calendar } from "@fullcalendar/vue";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
-import frLocale from "@fullcalendar/core/locales/fr";
+import { MonthPickerInput } from "vue-month-picker";
 
 export default {
   components: {
     SideBar,
     TopBar,
-    FullCalendar,
+    MonthPickerInput,
   },
   data() {
     return {
-      calendarOptions: {
-        plugins: [dayGridPlugin, interactionPlugin],
-        initialView: "dayGridMonth",
-        droppable: true,
-        events: [
-          {
-            title: "My Event",
-            start: "2021-04-01T16:30",
-          },
-        ],
-        locale: frLocale,
-      },
-      newEvent: {
-        customer: null,
-        date: null,
-        hour: null,
-        color: null,
-        url: "/singleCustomer",
-      },
+      newEvent: [
+        {
+          id: null,
+          title: null,
+          start: null,
+          time: null,
+          color: null,
+        },
+      ],
     };
   },
-  methods: {
-    setEvent() {
-      this.calendarOptions.events.push({
-        title: this.newEvent.customer,
-        start: `${this.newEvent.date}T${this.newEvent.hour}`,
-        color: this.newEvent.color,
-        url: this.newEvent.url,
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/style/style.scss";
 
-.card {
-  padding: 20px 10px;
-  color: $white;
-  .card-content {
-    select {
-      border: 1px solid $primary;
-      margin-left: 0;
+#agenda {
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 1px solid red;
+  .container {
+    margin: 0;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      height: 80px !important;
+      width: 80px !important;
+      min-width: inherit !important;
     }
-    input[type="date"],
-    input[type="time"],
-    input[type="color"] {
-      background-color: $black;
-      color: $white;
-      border-radius: 5px;
-      width: 200px;
-      padding: 10px 10px;
-      border: 1px solid $primary;
-    }
-    a {
-      color: $white;
-    }
+  }
+}
+
+.month-picker-input-container[data-v-201d773d] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto !important;
+  input {
+    width: 100% !important;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    font-size: 1.5rem;
   }
 }
 </style>

@@ -16,6 +16,9 @@ import PrestationsType from './views/PrestationsType'
 import router from './router'
 import store from './store'
 
+import vClickOutside from 'v-click-outside'
+
+Vue.use(vClickOutside)
 Vue.config.productionTip = false
 
 new Vue({

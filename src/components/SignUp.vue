@@ -79,6 +79,7 @@ export default {};
       font-size: inherit;
       @media (max-width: 460px) {
         text-align: center !important;
+        width: 70%;
       }
     }
     input {

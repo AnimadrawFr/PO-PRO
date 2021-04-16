@@ -51,11 +51,6 @@ export default {
       localStorage.setItem('sidebar', this.isActivated)
     },
   },
-  mounted() {
-    if(window.innerWidth <= 1020) {
-      this.isActivated = false
-    }
-  }
 };
 </script>
 
