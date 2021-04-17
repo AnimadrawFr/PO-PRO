@@ -3,8 +3,7 @@
     <input
       type="text"
       :value="value"
-      @input="$emit('input', $event.target.value)"
-    />
+      @input="$emit('input', $event.target.value)"/>
     <span @click="$emit('remove-input')">
       <i class="icon fas fa-times"></i>
     </span>

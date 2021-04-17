@@ -9,8 +9,9 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "google-search-results-nodejs": "^2.0.1",
-    "interactjs": "^1.10.11",
+    "gsap": "^3.6.1",
     "parse": "^3.1.0",
+    "uuid": "^8.3.2",
     "vue": "^2.6.11",
     "vue-month-picker": "^1.4.0",
     "vue-router": "^3.2.0",

@@ -10,16 +10,23 @@
       </span>
     </div>
 
+    <div style="padding-top: 50px; position: absolute; left: 0; top: 30px;">
+      <h1>tasks</h1>
+      <template v-for="(task, index) in tasks">
+        <p @click="ctrlz(task)" style="color: white;">{{ task.element }} - x:{{ task.x }} - y:{{ task.y }}</p>
+      </template>
+      <pre>{{ actualTask }}</pre>
+    </div>
+
     <div class="workspace">
       <div v-if="activeView === 'recto' || activeView === 'rv'"
            @wheel.prevent="zoom"
            @mouseover="activeZoom"
            class="front">
-        <div class="draggable"></div>
-        <!--<div v-for="(input, index) in inputs"
+        <div v-for="(input, index) in inputs"
              :key="index"
-             :class="'l' + index + 'l'"
-             style="color: red">{{ input.text }}</div>-->
+             :class="`draggableElements d${input.id}`"
+             style="color: red">{{ input.text }}</div>
       </div>
       <div v-if="activeView === 'verso' || activeView === 'rv'"
            @wheel.prevent="zoom"
@@ -58,7 +65,9 @@
 </template>
 
 <script>
-  import interact from 'interactjs'
+  import { gsap, TweenMax, Draggable } from 'gsap/all'
+  import { v4 as uuidv4 } from 'uuid'
+
   import BaseInput from '@/views/components/BaseInput'
 
   export default {
@@ -112,6 +121,8 @@
           }
         ],
         inputs: [],
+        tasks: [],
+        actualTask: null,
         selectedTool: '',
         activeView: 'recto',
         activeZoomOn: '',
@@ -124,25 +135,38 @@
         this.activeZoomOn.style.transform = `scale(${this.baseScale})`
       },
       addInput () {
-        this.inputs.push({ text: '' })
-        const position = { x: 0, y: 0 }
+        this.inputs.push({ id: uuidv4(), text: '' })
+        setTimeout(() => { // RELOU CE SET TIMEOUT
+          const d = document.querySelectorAll('.draggableElements')
 
-        for (let i = 0; i < this.inputs.length; i++) {
-          interact(`.l${i}l`).draggable({
-            listeners: {
-              start (e) {
-                console.log(e.type, e.target)
+          for (let i = 0; i < d.length; i++) {
+            let mainDraggable = new Draggable(d[i], {
+              bounds: '.front',
+              onDragStart: (e) => {
+                this.actualTask = {
+                  task: 'Drag',
+                  element: e.target.className
+                }
               },
-              move (e) {
-                position.x = e.dx
-                position.y = e.dy
-                e.target.style.transform =
-                    `translate(${position.x}px, ${position.y}px)`
-              }
-            }
-          })
-        }
+              onDragEnd: (e) => {
+                this.actualTask = null
 
+                this.tasks.push({
+                  element: e.target.className,
+                  x: e.layerX - e.offsetX,
+                  y: e.layerY - e.offsetY
+                })
+              }
+            })
+            mainDraggable.enable()
+          }
+
+          TweenMax.to(d[-1], 1, { x: 0, y: 0 })
+        })
+      },
+      ctrlz ({ element, x, y }) {
+        const htmlElement = document.querySelector(`.${element.split(' ')[1]}`)
+        TweenMax.to(htmlElement, 1, { x, y })
       },
       removeInput (index) {
         this.inputs.splice(index, 1)
@@ -158,27 +182,8 @@
       }
     },
     mounted () {
+      gsap.registerPlugin(Draggable)
       this.zoomableElement = [document.querySelector('.front'), document.querySelector('.back')]
-      const position = { x: 0, y: 0 }
-
-      const v = document.querySelector('.draggable')
-      console.log(v)
-
-      console.log(interact('.draggable').draggable())
-
-      interact('.draggable').draggable({
-        listeners: {
-          start (e) {
-            console.log(e.type, e.target)
-          },
-          move (e) {
-            position.x = e.dx
-            position.y = e.dy
-            e.target.style.transform =
-                `translate(${position.x}px, ${position.y}px)`
-          }
-        }
-      })
     }
   }
 </script>
@@ -186,16 +191,8 @@
 <style lang="scss" scoped>
 @import "@/style/variables.scss";
 
-.draggable {
-  width: 25%;
-  min-height: 6.5em;
-  margin: 1rem 0 0 1rem;
-  background-color: #29e;
-  color: white;
-  border-radius: 0.75em;
-  padding: 4%;
-  touch-action: none;
-  user-select: none;
+.draggableElements {
+  width: fit-content;
 }
 
 .editor {
